@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "node server.js",
+    "sddsstart": "react-scripts start",
     "lint": "eslint --ext .js,.jsx src --fix",
     "format": "prettier src/**/*.js --write. --config ./.prettierrc",
     "build": "react-scripts build",
