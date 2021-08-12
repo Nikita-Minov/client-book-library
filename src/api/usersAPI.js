@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const instance = axios.create({
     baseURL: 'https://mern-library-app-server.herokuapp.com/api',
+    withCredentials: true
 });
 
 export const usersAPI = {
