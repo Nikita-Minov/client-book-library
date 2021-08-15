@@ -25,5 +25,10 @@ export const booksAPI = {
     return instance.post('/delete-book', { idBook: id}).then((res) => {
       return res.data
     });
+  },
+  getBook(id) {
+    return instance.post('/get-book', { idBook: id}).then((res) => {
+      return res.data
+    });
   }
 };

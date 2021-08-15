@@ -12,6 +12,7 @@ import ProfileContainer from "./pages/Profile";
 import Container from '@material-ui/core/Container';
 import MyLibrary from "./pages/MyLibrary";
 import LoginContainer from "./pages/Login.jsx";
+import BookPage from "./pages/BookPage";
 
 function App(props) {
   useEffect( () => {
@@ -52,6 +53,7 @@ function App(props) {
               <Route path="/" exact render={() => <Main />} />
               <Route path="/profile" render={() => <ProfileContainer />} />
               <Route path="/my-library" render={() => <MyLibrary />} />
+              <Route path="/book/:id" render={() => <BookPage />} />
             </BooksWrapper>
             <LoginContainer handleCloseLoginForm={handleCloseLoginForm} openLoginForm={openLoginForm}/>
             <RegisterContainer handleCloseRegisterForm={handleCloseRegisterForm} openRegisterForm={openRegisterForm}/>

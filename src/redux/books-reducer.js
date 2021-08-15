@@ -2,10 +2,19 @@ import { booksAPI } from '../api/booksAPI';
 
 const SET_BOOKS = 'SET_BOOKS';
 const SET_USER_BOOKS = 'SET_USER_BOOKS';
+const SET_CURRENT_BOOK = 'SET_CURRENT_BOOK';
 
 const initialState = {
   books: [],
   myBooks: [],
+  currentBook: {
+    author: '',
+    creator: null,
+    fileName: '',
+    idBook: null,
+    link: '',
+    name: '',
+  }
 };
 
 const booksReducer = (state = initialState, action) => {
@@ -20,6 +29,12 @@ const booksReducer = (state = initialState, action) => {
       return {
         ...state,
         myBooks: action.userBooks.items
+      }
+    }
+    case SET_CURRENT_BOOK: {
+      return {
+        ...state,
+        currentBook: action.currentBook.book
       }
     }
     default: {
@@ -41,6 +56,14 @@ export const setUserBooks = (userBooks) => {
     userBooks,
   };
 };
+
+export const setCurrentBook = (currentBook) => {
+  return {
+    type: SET_CURRENT_BOOK,
+    currentBook,
+  };
+};
+
 
 export const getUserBooks = (id) => async (dispatch) => {
   const data = await booksAPI.getUserBooks(id);
@@ -64,5 +87,11 @@ export const deleteBook = (id, creator) => async (dispatch) => {
   await dispatch(getBooks());
   await dispatch(getUserBooks(creator))
 }
+
+export const getBook = (id) => async (dispatch) => {
+  const book = await booksAPI.getBook(id);
+  console.log(book);
+  dispatch(setCurrentBook(book));
+};
 
 export default booksReducer;

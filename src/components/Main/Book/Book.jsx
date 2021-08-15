@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   grid: {
@@ -16,10 +17,11 @@ const useStyles = makeStyles(() => ({
 const Book = (props) => {
   const classes = useStyles();
   return (
-    <Grid className={classes.grid} key={props.key}>
+    <Grid className={classes.grid}>
       <Title>{props.title}</Title>
       <Author>{props.author}</Author>
       <a href={props.link}>Читать</a>
+      <Link to={`/book/${props.idBook}`} >Read More</Link>
     </Grid>
   );
 };

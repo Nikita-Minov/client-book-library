@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 
 const Main = (props) => {
   const books = props.books.map((el) => {
-    return <Book key={el.idBook} title={el.name} author={el.author} />;
+    return <Book idBook={el.idBook} title={el.name} author={el.author} />;
   });
   return (
     <MainWrapper>
