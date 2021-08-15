@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import {connect} from "react-redux";
+import {deleteBook} from "../../redux/books-reducer";
 
 const useStyles = makeStyles(() => ({
   grid: {
@@ -12,14 +14,16 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-
 const MyBook = (props) => {
   const classes = useStyles();
   return (
-    <Grid className={classes.grid} key={props.key}>
+    <Grid className={classes.grid}>
       <Title>{props.title}</Title>
       <Author>{props.author}</Author>
       <a href={props.link}>Читать</a>
+      <button onClick={() => {
+        props.deleteBook(props.idBook, props.creator)
+      }} >Delete Book</button>
     </Grid>
   );
 };
@@ -35,4 +39,6 @@ const Author = styled.h3`
   color: black;
 `;
 
-export default MyBook;
+const MyBookContainer = connect(null, {deleteBook})(MyBook);
+
+export default MyBookContainer;

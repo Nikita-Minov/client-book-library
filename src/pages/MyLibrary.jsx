@@ -14,8 +14,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 const MyLibrary = (props) => {
-  const books = props.myBooks.map((el, id) => {
-    return <MyBook key={id} link={el.link} title={el.name} author={el.author}/>;
+  const books = props.myBooks.map((el) => {
+    return <MyBook idBook={el.idBook} link={el.link} title={el.name} author={el.author} creator={el.creator}/>;
   });
   const classes = useStyles();
   if(props.isAuth === true) {

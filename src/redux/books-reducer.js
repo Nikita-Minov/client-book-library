@@ -59,4 +59,10 @@ export const addBook = (creator, file) => async (dispatch) => {
   await dispatch(getUserBooks(creator))
 };
 
+export const deleteBook = (id, creator) => async (dispatch) => {
+  await booksAPI.deleteBook(id);
+  await dispatch(getBooks());
+  await dispatch(getUserBooks(creator))
+}
+
 export default booksReducer;
